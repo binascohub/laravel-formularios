@@ -9,3 +9,9 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Tue May 19 15:41:07.749392 2020] [lbmethod_heartbeat:notice] [pid 1] AH02282: No slotmem from mod_heartmonitor
 [Tue May 19 15:41:07.768603 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
 [Tue May 19 15:41:07.768628 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Tue May 19 16:07:06.290558 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+[Tue May 19 16:10:37.275028 2020] [suexec:notice] [pid 1] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.25.0.2. Set the 'ServerName' directive globally to suppress this message
+[Tue May 19 16:10:37.289671 2020] [lbmethod_heartbeat:notice] [pid 1] AH02282: No slotmem from mod_heartmonitor
+[Tue May 19 16:10:37.309515 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
+[Tue May 19 16:10:37.309545 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
