@@ -12,7 +12,7 @@ $factory->define(Client::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'defaulter' => rand(0,1),
         'date_birth' => $faker->date(),
-        'sex' => rand(1,10)%2==0?'m':'f',
+        'sex' => rand(1,10) % 2 == 0 ? 'm' : 'f',
         'marital_status' => rand(1,3),
         'physical_disability' => rand(1,10) % 2 == 0 ? $faker->word : null
     ];
