@@ -1,0 +1,48 @@
+version: '3.0'
+services:
+  php:
+    build: "./docker/php"
+    container_name: "server-laravel"
+    dns:
+      - 192.168.0.250
+      - 8.8.8.8
+      - 8.8.4.4
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./logs/httpd:/var/log/httpd
+    links:
+      - database
+    environment:
+      XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_enable=1"
+  database:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - postgres-compose-network
+    environment:
+      POSTGRES_PASSWORD: "123"
+  pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pesquisa@cadastro.com"
+      PGADMIN_DEFAULT_PASSWORD: "123"
+    ports:
+      - "16543:80"
+    depends_on:
+      - database
+    networks:
+      - postgres-compose-network
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  postgres-compose-network:
+    driver: bridge
