@@ -1,6 +1,10 @@
-<h1>lista de clientes</h1>
 
-<table border="1">
+@extends('layouts.layout')
+
+@section('content')
+<h3>lista de clientes</h3>
+<br />
+<table border="1" class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
@@ -28,3 +32,4 @@
         @endforeach
     </tbody>
 </table>
+@endsection
