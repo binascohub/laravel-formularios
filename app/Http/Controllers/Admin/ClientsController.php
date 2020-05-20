@@ -48,7 +48,8 @@ class ClientsController extends Controller
 
         // modelo de mass assignment
         $data = $request->all();
-        Client::create($request->all());
+        $data['defaulter'] = $request->has('defaulter');
+        Client::create($data);
 
         return redirect()->to('/admin/clients');
     }
