@@ -3,8 +3,10 @@
 
 @section('content')
 <h3>lista de clientes</h3>
-<br />
-<table border="1" class="table table-striped">
+
+<a href="{{ route('clients.create') }}" class="btn btn-primary">Novo</a>
+<br /><br />
+<table class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>

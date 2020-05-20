@@ -23,3 +23,9 @@ Route::group([
 ], function () {
     Route::resource('clients', 'ClientsController');
 });
+
+# modelo rota nomeada
+# pode ser chamada na view com route('meu-nome')
+Route::get('/rota-nomeada', function(){
+    echo 'Olá Mundo!';
+})->name('meu-nome');
