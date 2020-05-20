@@ -2,12 +2,16 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+require_once __DIR__.'/../fakerdata/DocumentNumber.php';
+
 use App\Client;
 use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
+    $cpfs = cpfs();
     return [
         'name' => $faker->name,
+        'document_number' => $cpfs[array_rand(cpfs(), 1)],
         'email' => $faker->email,
         'phone' => $faker->phoneNumber,
         'defaulter' => rand(0,1),
