@@ -10,7 +10,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-logs/httpd/error_log
-logs/httpd/access_log
 logs/httpd/access_log
 logs/httpd/error_log

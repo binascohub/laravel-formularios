@@ -6,10 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    //
+    // constantes
     const MARITAL_STATUS = [
         1 => 'Solteiro',
         2 => 'Casado',
         3 => 'Divorciado'
+    ];
+
+    // adicionado para mass assignment
+    protected $fillable = [
+        'name',
+        'document_number',
+        'email',
+        'phone',
+        'defaulter',
+        'date_birth',
+        'sex',
+        'marital_status',
+        'physical_disability'
     ];
 }
