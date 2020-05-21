@@ -27,3 +27,4 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Wed May 20 14:21:36.371526 2020] [lbmethod_heartbeat:notice] [pid 1] AH02282: No slotmem from mod_heartmonitor
 [Wed May 20 14:21:38.687913 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
 [Wed May 20 14:21:38.688053 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Wed May 20 16:06:14.932913 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
