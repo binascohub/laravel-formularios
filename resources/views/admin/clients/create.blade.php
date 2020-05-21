@@ -3,7 +3,13 @@
 
 @section('content')
 <h3>Novo Cliente</h3>
-<form method="post" action="{{ route(clients.list) }}">
+
+@if($errors->any)
+    @foreach($errors->all() as $error)
+    soreach
+@endif
+
+<form method="post" action="{{ route('clients.store') }}">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="name">Nome</label>
