@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Client;
 use App\Http\Controllers\Controller;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -31,7 +30,10 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('admin.clients.create');
+        return view(
+            'admin.clients.create',
+            ['client' => new Client()]
+        );
     }
 
     /**
