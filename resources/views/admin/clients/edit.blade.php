@@ -39,11 +39,11 @@
 
     <div class="form-group">
         <label for="marital_status">Estado Civil</label>
-        <select class="form-control" id="marital_status" name="marital_status" value="{{$client->marital_status}}">
+        <select class="form-control" id="marital_status" name="marital_status">
             <option value="">Selecione</option>
-            <option value="1">Solteiro</option>
-            <option value="2">Casado</option>
-            <option value="3">Divorciado</option>
+            <option value="1" @if($client->marital_status=='1') selected @endif>Solteiro</option>
+            <option value="2" @if($client->marital_status=='2') selected @endif>Casado</option>
+            <option value="3" @if($client->marital_status=='3') selected @endif>Divorciado</option>
         </select>
     </div>
 
