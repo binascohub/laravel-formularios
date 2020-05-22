@@ -14,6 +14,9 @@
 
 <form method="post" action="{{ route('clients.update', ['client' => $client->id]) }}">
     {{ csrf_field() }}
+
+    {{ method_field('PUT') }}
+
     <div class="form-group">
         <label for="name">Nome</label>
     <input class="form-control" id="name" name="name" value="{{$client->name}}" />
