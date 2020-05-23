@@ -5,6 +5,14 @@
 <h3>Ver cliente</h3>
 <a href="{{route('clients.edit',['client' => $client->id])}}"
    class="btn btn-primary" >Editar</a>
+<a href="#" class="btn btn-danger"
+    onclick="event.preventDefault();document.getElementById('form-delete').submit()"
+    >Excluir</a>
+<form id="form-delete" style="display:none;" method="post"
+    action="{{route('clients.destroy',['client' => $client->id])}}">
+    {{ csrf_field() }}
+    {{ method_field('DELETE') }}
+</form>
 <br /><br />
 <table class="table table-striped">
     <tbody>
