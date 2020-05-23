@@ -67,9 +67,9 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        //
+        return view('admin.clients.show', compact('client'));
     }
 
     /**
@@ -78,9 +78,10 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        $client = Client::findOrFail($id);
+        // removido devido parametro ter mesmo nome da ação
+        #$client = Client::findOrFail($client);
 
         return View('admin.clients.edit', compact('client'));
     }
@@ -92,11 +93,8 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client)
     {
-        // carrega cliente pelo ID
-        $client = Client::findOrFail($id);
-
         // validações
         $this->_validate($request);
 

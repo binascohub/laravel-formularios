@@ -66,7 +66,8 @@
 <div class="checkbox">
     <label>
         <input type="checkbox" name="defaulter" id="defaulter"
-            @if($client->defaulter) checked @endif /> Inadimplente?
+            @if(old('defaulter',$client->defaulter)) checked @endif /> Inadimplente?
     </label>
 </div>
+
 <button type="submit" class="btn btn-primary">Salvar</button>
