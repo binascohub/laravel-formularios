@@ -30,7 +30,7 @@ class AlterToClientTypeClientsTable extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->dropUnique('clients_document_number_unique');
+            $table->string('document_number')->uniqid(false)->change();
             $table->date('date_birth')->change();
             $table->string('sex', 1)->change();
             $table->string('marital_status', array_keys(\App\Client::MARITAL_STATUS))
