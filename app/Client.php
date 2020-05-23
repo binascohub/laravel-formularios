@@ -13,6 +13,9 @@ class Client extends Model
         3 => 'Divorciado'
     ];
 
+    const TYPE_INDIVIDUAL = 'individual';
+    const TYPE_LEGAL = 'legal';
+
     // adicionado para mass assignment
     protected $fillable = [
         'name',
