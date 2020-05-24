@@ -1,5 +1,6 @@
 <?php
 
+use App\Client;
 use Illuminate\Database\Seeder;
 
 class ClientsTableSeeder extends Seeder
@@ -11,6 +12,7 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Client::class, 3)->create();
+        factory(Client::class, 3)->state(Client::TYPE_INDIVIDUAL)->create();
+        factory(Client::class, 3)->state(Client::TYPE_LEGAL)->create();
     }
 }

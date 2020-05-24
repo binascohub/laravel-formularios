@@ -110,7 +110,7 @@ class ClientsController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * controller
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
