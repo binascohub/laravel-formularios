@@ -52,7 +52,7 @@ class ClientsController extends Controller
     {
 
         // validações
-        $this->_validate($request);
+        $data = $this->_validate($request);
 
         // Adicionando um a um
         # $client = new Client();
@@ -60,8 +60,8 @@ class ClientsController extends Controller
         # $client->save();
 
         // modelo de mass assignment
-        $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');
+        $data['client_type'] = Client::getClientType($request->get('client_type'));
         Client::create($data);
 
         return redirect()->route('clients.index');
@@ -89,7 +89,12 @@ class ClientsController extends Controller
         // removido devido parametro ter mesmo nome da ação
         #$client = Client::findOrFail($client);
 
-        return View('admin.clients.edit', compact('client'));
+        $clientType = $client->client_type;
+
+        return View(
+            'admin.clients.edit',
+            compact('client', 'clientType')
+        );
     }
 
     /**
@@ -101,11 +106,8 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        // validações
-        $this->_validate($request);
+        $data = $this->_validate($request);
 
-        // modelo de mass assignment
-        $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');
 
         $client->fill($data);
@@ -126,21 +128,37 @@ class ClientsController extends Controller
         return redirect()->route('clients.index');
     }
 
+    /**
+     * Validações de formularios
+     */
     protected function _validate($request)
     {
-        // validações
-        $marital_status = implode( ',', array_keys(Client::MARITAL_STATUS) );
-
-        $this->validate($request,[
+        $rules = [
             'name' => 'required|max:255',
             'document_number' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+        ];
+
+        $marital_status = implode( ',', array_keys(Client::MARITAL_STATUS) );
+        $rulesIndividual = [
             'date_birth' => 'required|date',
             'marital_status' => "required|in:$marital_status",
             'sex' => 'required|in:m,f',
             'physical_disability' => 'max:255'
-        ]);
+        ];
 
+        $rulesLegal = [
+            'company_name' => 'required|max:255'
+        ];
+
+        $clientType = Client::getClientType($request->get('client_type'));
+        if ($clientType == Client::TYPE_INDIVIDUAL){
+            $clientType = $rules + $rulesIndividual;
+        } else {
+            $clientType = $rules + $rulesLegal;
+        }
+
+        return $this->validate($request, $clientType);
     }
 }
