@@ -134,12 +134,14 @@ class ClientsController extends Controller
     protected function _validate($request)
     {
 
+        $clientType = Client::getClientType($request->get('client_type'));
+        $documentNumberType = $clientType == Client::TYPE_INDIVIDUAL ? 'cpf' : 'cnpj';
         $client = $request->route('client');
         $clientId = $client instanceof Client ? $client->id : null;
 
         $rules = [
             'name' => 'required|max:255',
-            'document_number' => "required|unique:clients,document_number,$clientId",
+            'document_number' => "required|unique:clients,document_number,$clientId|document_number:$documentNumberType",
             'email' => 'required|email',
             'phone' => 'required',
         ];
@@ -156,7 +158,6 @@ class ClientsController extends Controller
             'company_name' => 'required|max:255'
         ];
 
-        $clientType = Client::getClientType($request->get('client_type'));
         if ($clientType == Client::TYPE_INDIVIDUAL){
             $clientType = $rules + $rulesIndividual;
         } else {
